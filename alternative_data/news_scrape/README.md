@@ -21,6 +21,7 @@
    ```
 
 ## Contributing  
+- Scrape exact date/time from links in step 2
 - Method comments
 - Typesafety
 - Test different prompts/update prompt pipeline
