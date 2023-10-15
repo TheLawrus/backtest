@@ -22,6 +22,7 @@
 
 ## Contributing  
 - Scrape exact date/time from links in [step 2](https://github.com/Cardinal-Trading-UW-Madison/EDA/blob/c87c577efb7ed19c83bf0d2071e7b2985b5ffc7a/alternative_data/news_scrape/scrape/scrape_links.py#L9C5-L9C17)
+- Refactor steps 4 and 5 using langchain
 - Method comments
 - Typesafety
 - Test different prompts/update prompt pipeline
