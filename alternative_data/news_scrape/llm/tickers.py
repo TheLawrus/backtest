@@ -31,6 +31,7 @@ def main():
     with open(f"{JSON_OUTPUT}_step4.json", "r") as f:
         data = json.load(f)
         
+    i = 1
     for d in data:
         response = openai.ChatCompletion.create(
             model=OPENAI_MODEL,
@@ -54,8 +55,11 @@ def main():
             frequency_penalty=0,
             presence_penalty=0
         )
-        print(response["choices"][0]["message"]["content"])
+        # print(response["choices"][0]["message"]["content"])
+        print(f"Generated Tickers: {i}")
         d["tickers"] = json.loads(response["choices"][0]["message"]["content"])
+        
+        i += 1
 
     with open(f"{JSON_OUTPUT}_step5.json", "w") as json_file:
         json.dump(data, json_file, default=str)

@@ -8,7 +8,7 @@ from llama_index import Document
 import os
 
 from llm.utils import KeywordExtractor
-from config import JSON_OUTPUT, OPENAI_API_KEY
+from config import JSON_OUTPUT, OPENAI_API_KEY, TEST_MODE
 
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
@@ -33,7 +33,8 @@ def main():
             documents.append(Document(text=d["text"], metadata={
                             "link": d["link"], "publisher": d["publisher"], "date": d["date"]}))
 
-    documents = documents[:5]
+    if TEST_MODE:
+        documents = documents[:5]
 
     nodes = node_parser.get_nodes_from_documents(documents)
     res = []
