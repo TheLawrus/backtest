@@ -12,7 +12,3 @@ You can Simply run main.py.
 * Help improve the logic of backtesting
 * Help improve the runtime by optimizing the algorithm
 * Generate new strategy to make use of factors
-
-## License
-
-License information.
