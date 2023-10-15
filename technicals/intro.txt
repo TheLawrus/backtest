@@ -1,2 +1,3 @@
 This is for research on technical factors
 
+Found this python library https://twopirllc.github.io/pandas-ta/
