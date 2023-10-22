@@ -20,6 +20,7 @@ In the given example the index starts at 14 because the RSI factor requires the 
 If your factor only uses the current day information, feel free to change it to 1 or something else that fits.
 And then voilà! Here is our first plot of the backtesting result:
 ![image](https://github.com/Cardinal-Trading-UW-Madison/EDA/assets/127585484/06cdad1f-0fd9-4a19-9418-7eec1ccb89bb)
+
 Looks pretty ugly for now, but we are going to plot something really cool like this one day (hopefully).
 
 ![image](https://github.com/Cardinal-Trading-UW-Madison/EDA/assets/127585484/96633fe4-e38e-4e22-9c59-ae9a6cc2bcaa)
