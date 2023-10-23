@@ -17,23 +17,29 @@ for i in range(0,len(sentiment_df) - 1):#1300 # iterate through every day in bac
 
     current_sentiment = sentiment_df.iloc[i][1:]
     sorted_sentiment = current_sentiment.sort_values(ascending=False)
-    sorted_sentiment = sorted_sentiment.dropna()[:20].index
+    sorted_sentiment = sorted_sentiment.dropna()[:200]
     # print(sorted_sentiment)
     # rank the tickers with factor value
-    # drop the NAN ones, take the first 10 tickers with highest factor value
-    count = 0 # count the valid stock we can buy today
-    for symbol in sorted_sentiment:
-        # load the close price for these 10 tickers we want to trade at the end of that day
-        df = pd.read_csv(f"Data/{symbol}.csv", index_col=0, parse_dates=True) 
-        if len(df['Close']) == 0:
+    # drop the NAN ones, take the first 100 tickers with highest factor value
+    valid_count = 0 # count the valid stock we can buy today
+    for symbol in sorted_sentiment.index:
+        # load the close price for these 100 tickers we want to trade at the end of that day
+        try:
+            df = pd.read_csv(f"Data/{symbol}.csv", index_col=0, parse_dates=True) 
+        except:
             continue
-        count += 1
+        count = int(sorted_sentiment[symbol].strip('()').split(',')[1])
+        if len(df['Close']) == 0 or count < 2:
+            continue
+        valid_count += 1
         today_close = df['Close'][date]
         tomorrow_close = df['Close'][tomorrow_date]
         # calculate the return for each ticker, sum it up
         ret += (tomorrow_close - today_close) / today_close 
+        if valid_count == 10:
+            break
         
-    sentiment_list.append(ret/count) # divide it by count because we have to spilt our position evenly
+    sentiment_list.append(ret/valid_count if valid_count else 0) # divide it by count because we have to spilt our position evenly
     print(i) # logging
 
 # calculate the cummulative return so that we can plot

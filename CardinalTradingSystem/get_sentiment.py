@@ -5,7 +5,7 @@ import time
 # Constants
 API_TOKEN = '65356c15cdf9d7.54924335'
 API_URL = 'https://eodhd.com/api/sentiments'
-FROM_DATE = '2021-01-03'
+FROM_DATE = '2020-01-03'
 TO_DATE = '2023-03-03'
 
 # Load tickers
