@@ -33,7 +33,7 @@ def get_post(_page, _post_title):
 
 #actually collecting data
 def collect_data(_pages, _days_back, _src, _outfile):
-	header_file = ['Post URL', 'Time (UTC)', 'Post Content']
+	header_file = ['Time (UTC)', 'Post URL', 'Post Content']
 	idea_files = []
 	for i in range(_pages):
 		post_titles = get_post_titles(i+1, _src)
@@ -41,8 +41,10 @@ def collect_data(_pages, _days_back, _src, _outfile):
 			print("Page: {} Post:{}".format(i+1, j))
 			post_url, post_time, post_unix, post_content = get_post(i, post_titles[j])
 
-			if (time.time() - post_unix) / 86400000 <= _days_back:
+			if (time.time() - post_unix) / 86400 <= _days_back:
 				idea_files.append([post_time, post_url, post_content])
+			else:
+				print("rejected:", post_time)
 
 	#Saving the scraped ideas, note that this overwrites previous data
 	with open(_outfile, 'w', newline='') as myfile:
@@ -54,4 +56,4 @@ def collect_data(_pages, _days_back, _src, _outfile):
 			wr.writerow(idea)
 
 #Collecting data on first 10 pages of stock idea posts from last 14 days
-collect_data(10, 14, "https://www.tradingview.com/markets/stocks-usa/ideas/page-{}/", 'scraped_stock_ideas.csv')
+collect_data(100, 14, "https://www.tradingview.com/markets/stocks-usa/ideas/page-{}/", 'scraped_stock_ideas_pg0-100.csv')
