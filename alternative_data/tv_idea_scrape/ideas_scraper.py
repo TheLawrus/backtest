@@ -33,7 +33,7 @@ def get_post(_page, _post_title):
 
 #actually collecting data
 def collect_data(_pages, _days_back, _src, _outfile):
-	header_file = ['Post URL, Time (UTC), Post Content']
+	header_file = ['Post URL', 'Time (UTC)', 'Post Content']
 	idea_files = []
 	for i in range(_pages):
 		post_titles = get_post_titles(i+1, _src)
