@@ -8,7 +8,7 @@ sentiment_list = [] # everyday's return based on our factor
 SP500_list = [] # everyday's return for SP500 for comparison
 SP500_df = pd.read_csv('Data\^GSPC.csv', index_col=0, parse_dates=True)
 
-for i in range(0,len(sentiment_df) - 1):#1300 # iterate through every day in backtesting window
+for i in range(len(sentiment_df) - 500, len(sentiment_df) - 1):#1300 # iterate through every day in backtesting window
     ret = 0 # initialize return of that day to 0
     date = sentiment_df['Date'][i]
     tomorrow_date = sentiment_df['Date'][i+1]
@@ -29,14 +29,14 @@ for i in range(0,len(sentiment_df) - 1):#1300 # iterate through every day in bac
         except:
             continue
         count = int(sorted_sentiment[symbol].strip('()').split(',')[1])
-        if len(df['Close']) == 0 or count < 2:
+        if len(df['Close']) == 0 or count < 3:
             continue
         valid_count += 1
         today_close = df['Close'][date]
         tomorrow_close = df['Close'][tomorrow_date]
         # calculate the return for each ticker, sum it up
         ret += (tomorrow_close - today_close) / today_close 
-        if valid_count == 10:
+        if valid_count == 15:
             break
         
     sentiment_list.append(ret/valid_count if valid_count else 0) # divide it by count because we have to spilt our position evenly
