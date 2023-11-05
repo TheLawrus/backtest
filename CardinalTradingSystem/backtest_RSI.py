@@ -14,14 +14,14 @@ for i in range(14, 100):#1300 # iterate through every day in backtesting window
                                                                       #drop the NAN ones, take the first 10 tickers with highest factor value
     for symbol in sorted_RSI:
         # load the close price for these 10 tickers we want to trade at the end of that day
-        df = pd.read_csv(f"C:/Users/15104/Documents/Cardinal/CardinalTradingSystem/Data/{symbol}.csv", index_col=0, parse_dates=True) 
+        df = pd.read_csv(f"C:/Users/Arjun/Documents/GitHub/EDA/CardinalTradingSystem/Data/{symbol}.csv", index_col=0, parse_dates=True) 
         today_close = df['Close'][date]
         tomorrow_close = df['Close'][tomorrow_date]
         # calculate the return for each ticker, sum it up
         ret += (tomorrow_close - today_close) / today_close 
         
     ret_list.append(ret/10) # divide it by 10 because we have to spilt our position evenly
-    print(i) # logging
+    #print(i) # logging
 
 # calculate the cummulative return so that we can plot
 cumulative_sum = [ret_list[0]]
