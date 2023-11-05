@@ -14,7 +14,7 @@ sp500_ret_list = []  # Return list for S&P 500
 data_folder = "C:/Users/Arjun/Documents/GitHub/EDA/CardinalTradingSystem/Data/"
 
 # iterate through every day in backtesting window
-for i in range(14, 100):  # Adjust this range as per your data size
+for i in range(14, 800):  # Adjust this range as per your data size
     roc_ret = 0  # Initialize return of that day to 0 for ROC
     rsi_ret = 0  # Initialize return of that day to 0 for RSI
     sp500_daily_return = 0  # Initialize return of that day to 0 for S&P 500
@@ -59,6 +59,7 @@ for i in range(14, 100):  # Adjust this range as per your data size
     # Divide returns by 10 as we split our position evenly
     roc_ret_list.append(roc_ret/10)
     rsi_ret_list.append(rsi_ret/10)
+    print(i)
 
 # Calculate the cumulative return for both strategies and S&P 500
 cumulative_roc = [roc_ret_list[0]]
