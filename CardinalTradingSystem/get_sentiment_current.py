@@ -5,8 +5,8 @@ import time
 # Constants
 API_TOKEN = '65356c15cdf9d7.54924335'
 API_URL = 'https://eodhd.com/api/sentiments'
-FROM_DATE = '2023-10-23'
-TO_DATE = '2023-10-27'
+FROM_DATE = '2023-08-23'
+TO_DATE = '2023-11-04'
 
 # Load tickers
 tickers_df = pd.read_csv('sp500_tickers.csv', header=None)
