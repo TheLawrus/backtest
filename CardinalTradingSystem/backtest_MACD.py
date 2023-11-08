@@ -19,7 +19,7 @@ data_folder = "C:/Users/Arjun/Documents/GitHub/EDA/CardinalTradingSystem/Data/"
 
 
 # Iterate through every day in backtesting window
-for i in range(14, 800):  # Adjust this range as per your data size
+for i in range(14, 100):  # Adjust this range as per your data size
     roc_ret = 0
     rsi_ret = 0
     macd_ret = 0
@@ -133,7 +133,7 @@ for num in macd_excess_ret_list[1:]:
 plt.plot(cumulative_macd, label="MACD Strategy", color="purple")
 plt.plot(cumulative_sp500, label="S&P 500", color="red")
 plt.plot(cumulative_macd_excess, label="MACD Excess Return", color="green")
-plt.title("Performance Comparison: ROC vs RSI vs MACD vs S&P 500")
+plt.title("Performance Comparison: MACD vs S&P 500")
 plt.xlabel("Days")
 plt.ylabel("Cumulative Returns")
 plt.legend()
